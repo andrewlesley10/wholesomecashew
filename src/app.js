@@ -214,9 +214,7 @@ function renderDynamicComponents() {
   if (capabilitiesItemsGrid) {
     capabilitiesItemsGrid.innerHTML = capabilities.map(cap => `
       <div id="capability-item-${cap.id}" data-cap-id="${cap.id}" class="bg-white rounded-sm border border-stone-200 p-6 transition-all duration-300 text-left flex flex-col relative group hover:border-amber-800 hover:shadow-xs">
-        <div class="rounded-sm overflow-hidden aspect-[4/3] bg-stone-100 mb-4 border border-stone-200 flex items-center justify-center text-stone-400">
-          <span class="text-sm font-sans">Image</span>
-        </div>
+        <div class="rounded-sm overflow-hidden aspect-[4/3] bg-stone-100 mb-4 border border-stone-200"></div>
 
         <h3 class="font-serif font-semibold text-base text-stone-900 mb-2">
           ${cap.title}
@@ -451,9 +449,6 @@ function setupMarketsSectors() {
           <p class="text-stone-500 text-xs leading-relaxed font-sans mt-1">
             ${sec.desc}
           </p>
-          <span class="text-[9px] uppercase font-sans tracking-widest text-amber-700 font-semibold mt-auto pt-4 block">
-            Domestic Wholesale Node
-          </span>
         </div>
       `).join('');
       lucide.createIcons();
