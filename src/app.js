@@ -129,7 +129,6 @@ document.addEventListener('DOMContentLoaded', () => {
   highlightActiveNav();
   setupMobileMenu();
   renderDynamicComponents();
-  setupCapabilitiesInteractivity();
   setupMarketsSectors();
   setupCareersForm();
   setupContactForm();
@@ -214,28 +213,18 @@ function renderDynamicComponents() {
   const capabilitiesItemsGrid = document.getElementById('capabilities-items-grid-column-inner');
   if (capabilitiesItemsGrid) {
     capabilitiesItemsGrid.innerHTML = capabilities.map(cap => `
-      <div id="capability-item-${cap.id}" data-cap-id="${cap.id}" class="bg-white rounded-sm border border-stone-200 p-6 transition-all duration-300 cursor-pointer text-left flex flex-col relative group hover:border-amber-800 hover:shadow-xs">
-        <div class="flex items-center justify-between mb-4">
-          <div class="p-2.5 bg-stone-50 text-amber-800 rounded-sm group-hover:bg-amber-800 group-hover:text-white transition-colors duration-300">
-            <i data-lucide="${cap.icon}" class="w-5 h-5"></i>
-          </div>
-          <span class="text-[10px] uppercase font-sans tracking-widest text-amber-700 font-semibold">
-            Quality Certified
-          </span>
+      <div id="capability-item-${cap.id}" data-cap-id="${cap.id}" class="bg-white rounded-sm border border-stone-200 p-6 transition-all duration-300 text-left flex flex-col relative group hover:border-amber-800 hover:shadow-xs">
+        <div class="rounded-sm overflow-hidden aspect-[4/3] bg-stone-100 mb-4 border border-stone-200 flex items-center justify-center text-stone-400">
+          <span class="text-sm font-sans">Image</span>
         </div>
-        
+
         <h3 class="font-serif font-semibold text-base text-stone-900 mb-2">
           ${cap.title}
         </h3>
-        
+
         <p class="text-stone-500 text-xs leading-relaxed font-sans">
           ${cap.detail}
         </p>
-        
-        <div class="mt-4 pt-3 border-t border-dashed border-stone-200 flex items-center justify-between text-[10px] text-amber-800 font-sans font-bold uppercase tracking-wider">
-          <span class="detail-label-text">Interactive Detail</span>
-          <i data-lucide="chevron-down" class="w-3.5 h-3.5 opacity-40 group-hover:opacity-100 transition-transform duration-300 arrow-indicator"></i>
-        </div>
       </div>
     `).join('');
   }
