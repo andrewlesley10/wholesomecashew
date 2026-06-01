@@ -1,0 +1,379 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Design Fonts Selection -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    
+    <title>Contact Us - Wholesome Cashew Products</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Tailwind Configuration to match exact corporate branding -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+              mono: ['JetBrains Mono', 'monospace']
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Custom Core Animations & Tweaks -->
+    <style>
+      .animate-fade-in {
+        animation: fadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      /* Custom fine-grained branding helpers */
+      .bg-brand-brown-dark { background-color: #2F241C; }
+      .text-stone-350 { color: #A8A29E; }
+      .word-break-all { word-break: break-all; }
+    </style>
+  </head>
+  
+  <body class="min-h-screen flex flex-col bg-stone-50 text-stone-900 font-sans selection:bg-amber-850/25 selection:text-amber-900">
+
+    <!-- 1. PREMIUM HEADER NAVIGATION PORTAL -->
+    <header class="sticky top-0 z-50 bg-[#F9F7F5]/90 backdrop-blur-md border-b border-stone-200 shadow-sm" id="main-app-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div class="flex h-36 items-center justify-between" id="header-inner-container">
+          
+          <!-- Logo Brand portion -->
+          <a href="home" class="focus:outline-none cursor-pointer flex items-center gap-3 select-none text-left" id="nav-brand-btn">
+            <img src="/images/logo3.png" alt="Wholesome Cashew Logo" id="logo-cashew-mark" class="h-20 w-auto transition-transform duration-300 hover:scale-105 object-contain" />
+          </a>
+
+          <!-- Desktop Navigation link lists -->
+          <nav class="hidden md:flex items-center gap-1 lg:gap-2" id="desktop-nav-menu">
+            <a href="home" data-nav-page="home" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="landmark" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Home</span>
+            </a>
+            <a href="capabilities" data-nav-page="capabilities" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="hammer" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Capabilities</span>
+            </a>
+            <a href="markets" data-nav-page="markets" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="globe" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Export & Distribution</span>
+            </a>
+            <a href="careers" data-nav-page="careers" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="briefcase" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Careers</span>
+            </a>
+            <a href="contact" data-nav-page="contact" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="mail" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Contact Us</span>
+            </a>
+            
+            <div class="ml-4 pl-4 border-l border-stone-200" id="quick-contact-wrapper">
+              <a href="contact" class="flex items-center gap-1.5 bg-amber-800 hover:bg-amber-900 text-white px-4 py-2.5 rounded-sm font-sans text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer shadow-sm">
+                <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+                <span>Get a Quote</span>
+              </a>
+            </div>
+          </nav>
+
+          <!-- Mobile Hamburger Drawer trigger button -->
+          <div class="flex md:hidden items-center" id="mobile-menu-trigger-container">
+            <button id="mobile-hamburger-btn" class="p-2.5 rounded-sm text-stone-600 hover:text-amber-800 hover:bg-stone-100 focus:outline-none transition-colors">
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Drawer Slide panel -->
+      <div id="mobile-nav-panel" class="hidden md:hidden bg-[#F9F7F5] border-b border-stone-200 overflow-hidden animate-fade-in">
+        <div class="px-4 py-4 space-y-1.5">
+          <a href="home" data-nav-page="home" id="mobile-nav-home" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="landmark" class="w-4 h-4 opacity-80"></i>
+            <span>Home</span>
+          </a>
+          <a href="capabilities" data-nav-page="capabilities" id="mobile-nav-capabilities" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="hammer" class="w-4 h-4 opacity-80"></i>
+            <span>Capabilities</span>
+          </a>
+          <a href="markets" data-nav-page="markets" id="mobile-nav-markets" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="globe" class="w-4 h-4 opacity-80"></i>
+            <span>Export & Distribution</span>
+          </a>
+          <a href="careers" data-nav-page="careers" id="mobile-nav-careers" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="briefcase" class="w-4 h-4 opacity-80"></i>
+            <span>Careers</span>
+          </a>
+          <a href="contact" data-nav-page="contact" id="mobile-nav-contact" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="mail" class="w-4 h-4 opacity-80"></i>
+            <span>Contact Us</span>
+          </a>
+          
+          <div class="pt-4 mt-2 border-t border-stone-200">
+            <a href="contact" class="w-full flex items-center justify-center gap-2 bg-amber-800 hover:bg-amber-900 text-white py-3 rounded-sm font-sans text-xs font-bold uppercase tracking-wider transition-colors shadow">
+              <i data-lucide="phone-call" class="w-4 h-4"></i>
+              <span>Get in Touch Now</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. MAIN ACTIVE VIEWPORT STAGE -->
+    <main class="flex-grow overflow-x-hidden relative" id="main-viewport">
+      
+      <!-- VIEW E: CONTACT SCREEN -->
+      <div data-page-view="contact" class="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 text-left">
+        <div class="max-w-3xl space-y-4">
+          <span class="text-amber-800 text-xs font-semibold uppercase tracking-widest block font-sans">Worldwide Connections</span>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold tracking-tight text-stone-900">Contact Wholesome Cashew</h1>
+          <p class="text-stone-500 text-sm sm:text-base leading-relaxed leading-7">
+            Our global dispatch desk handles weekly container bookings out of Port of Colombo. Submit your corporate and wholesale details below to trigger pricing.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
+          <!-- Left info details -->
+          <div class="lg:col-span-5 space-y-8" id="contact-details-column">
+            <div class="bg-white rounded-sm border border-stone-200 p-6 shadow-sm" id="corporate-card">
+              <h3 class="font-serif font-bold text-lg text-stone-950">WHOLESOME CASHEW PRODUCTS (PRIVATE) LIMITED</h3>
+              <div class="flex flex-col space-y-3.5 text-xs text-stone-500 font-sans border-t border-stone-150 pt-4">
+                <div class="flex items-center gap-2">
+                  <i data-lucide="shield-check" class="w-4.5 h-4.5 text-amber-800"></i>
+                  <span>ROC Registration No.: <strong class="text-stone-900 font-bold">PV 88700</strong></span>
+                </div>
+                <div class="flex items-center gap-2">
+                  <i data-lucide="building2" class="w-4.5 h-4.5 text-amber-800"></i>
+                  <span>Registered with <strong class="text-stone-900 font-bold font-sans">Sri Lanka Cashew Corporation (SLCC)</strong></span>
+                </div>
+              </div>
+              <ul class="space-y-4 text-xs text-stone-650 text-stone-600 font-sans border-t border-stone-150 pt-4">
+                <li class="flex items-start gap-3">
+                  <i data-lucide="map-pin" class="w-5 h-5 text-amber-800 shrink-0 mt-0.5"></i>
+                  <span class="leading-relaxed text-stone-600">No. 47,<br />Ganepola,<br />Kotugoda, 11390,<br />Sri Lanka</span>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i data-lucide="phone" class="w-4.5 h-4.5 text-amber-800 shrink-0"></i>
+                  <a href="tel:+94117895382" class="hover:text-amber-805 transition-colors font-bold text-sm text-stone-900">+94 11 789 5382</a>
+                </li>
+                <li class="flex items-center gap-3">
+                  <i data-lucide="globe" class="w-4.5 h-4.5 text-amber-800 shrink-0"></i>
+                  <a href="http://www.wholesomecashew.lk" target="_blank" rel="noopener noreferrer" class="hover:text-amber-800 transition-colors font-semibold flex items-center gap-1">
+                    <span>www.wholesomecashew.lk</span>
+                    <i data-lucide="external-link" class="w-3 h-3 text-stone-400"></i>
+                  </a>
+                </li>
+              </ul>
+            </div>
+
+            <!-- Dept info box -->
+            <div class="space-y-4">
+              <h4 class="text-xs uppercase font-sans font-bold tracking-widest text-[#92400E]">Departmental Mail Addresses</h4>
+              <div class="space-y-3">
+                <div class="p-4 bg-white rounded-sm border border-stone-200 flex items-start gap-4 hover:border-amber-800 transition-colors shadow-xs">
+                  <div class="p-2 bg-stone-50 border border-stone-200 text-amber-800 rounded-sm shrink-0">
+                    <i data-lucide="message-square" class="w-4 h-4"></i>
+                  </div>
+                  <div class="text-left space-y-1 font-sans">
+                    <h4 class="font-serif font-bold text-xs text-stone-900">General Enquiries</h4>
+                    <a href="mailto:info@wholesomecashew.lk" class="text-xs font-bold text-amber-805 hover:text-amber-800 transition-colors word-break-all flex items-center gap-1.5">
+                      <i data-lucide="mail" class="w-3 h-3 text-amber-800 shrink-0"></i>
+                      <span>info@wholesomecashew.lk</span>
+                    </a>
+                    <p class="text-[11px] text-stone-500 leading-tight pt-1">Ask about raw products or processing schedules in our factories.</p>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-white rounded-sm border border-stone-200 flex items-start gap-4 hover:border-amber-800 transition-colors shadow-xs">
+                  <div class="p-2 bg-stone-50 border border-stone-200 text-amber-800 rounded-sm shrink-0">
+                    <i data-lucide="dollar-sign" class="w-4 h-4"></i>
+                  </div>
+                  <div class="text-left space-y-1 font-sans">
+                    <h4 class="font-serif font-bold text-xs text-stone-900">Sales &amp; Export Enquiries</h4>
+                    <a href="mailto:info@wholesomecashew.lk" class="text-xs font-bold text-amber-850 hover:text-amber-800 transition-colors word-break-all flex items-center gap-1.5">
+                      <i data-lucide="mail" class="w-3 h-3 text-amber-800 shrink-0"></i>
+                      <span>info@wholesomecashew.lk</span>
+                    </a>
+                    <p class="text-[11px] text-stone-500 leading-tight pt-1">Request custom specs sheets, container tariffs, or chemical index test lots.</p>
+                  </div>
+                </div>
+
+                <div class="p-4 bg-white rounded-sm border border-stone-200 flex items-start gap-4 hover:border-amber-805 transition-colors shadow-xs">
+                  <div class="p-2 bg-stone-50 border border-stone-200 text-amber-800 rounded-sm shrink-0">
+                    <i data-lucide="briefcase" class="w-4 h-4"></i>
+                  </div>
+                  <div class="text-left space-y-1 font-sans">
+                    <h4 class="font-serif font-bold text-xs text-stone-900">Careers Division</h4>
+                    <a href="mailto:careers@wholesomecashew.lk" class="text-xs font-bold text-amber-850 hover:text-amber-800 transition-colors word-break-all flex items-center gap-1.5">
+                      <i data-lucide="mail" class="w-3 h-3 text-amber-800 shrink-0"></i>
+                      <span>careers@wholesomecashew.lk</span>
+                    </a>
+                    <p class="text-[11px] text-stone-500 leading-tight pt-1">Submit resumes regarding food security coordination or factory operation in Gampaha.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right B2B contact form -->
+          <div class="lg:col-span-7 bg-white rounded-sm border border-stone-200 p-8 shadow-xs text-left">
+            <!-- Active interactive Form -->
+            <div id="contact-form-inner-wrapper">
+              <div>
+                <h3 class="font-serif font-bold text-lg text-stone-900 border-b border-stone-100 pb-1.5">B2B Commercial Request</h3>
+                <p class="text-xs text-stone-500 font-sans mt-0.5">Linked directly to Wholesome Cashew Desk. Submit details to prompt response.</p>
+              </div>
+              <form id="contact-interactive-form" class="space-y-5 mt-4">
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase tracking-wider text-stone-600 font-sans block">Your Name <span class="text-red-600">*</span> <span class="text-[8px] text-stone-500">(must)</span></label>
+                    <div class="relative">
+                      <i data-lucide="user" class="absolute left-3 top-3.5 w-4 h-4 text-stone-400"></i>
+                      <input type="text" id="contact-name-input" required placeholder="e.g. John Doe" class="w-full pl-9 pr-4 py-3 bg-stone-50 border border-stone-200 rounded-sm text-xs text-stone-900 focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800/10 transition-all font-sans" />
+                    </div>
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase tracking-wider text-stone-600 font-sans block">Company Name</label>
+                    <div class="relative">
+                      <i data-lucide="building2" class="absolute left-3 top-3.5 w-4 h-4 text-stone-400"></i>
+                      <input type="text" id="contact-company-input" placeholder="e.g. Gourmet Foods LLC" class="w-full pl-9 pr-4 py-3 bg-stone-50 border border-stone-200 rounded-sm text-xs text-stone-900 focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800/10 transition-all font-sans" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase tracking-wider text-stone-600 font-sans block">Email Address <span class="text-red-600">*</span> <span class="text-[8px] text-stone-500">(must)</span></label>
+                    <div class="relative">
+                      <i data-lucide="mail" class="absolute left-3 top-3.5 w-4 h-4 text-stone-400"></i>
+                      <input type="email" id="contact-email-input" required placeholder="buyer@gourmet.ae" class="w-full pl-9 pr-4 py-3 bg-stone-50 border border-stone-200 rounded-sm text-xs text-stone-900 focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800/10 transition-all font-sans" />
+                    </div>
+                  </div>
+                  <div class="space-y-1">
+                    <label class="text-[10px] font-bold uppercase tracking-wider text-stone-600 font-sans block">Phone Number</label>
+                    <div class="relative">
+                      <i data-lucide="phone" class="absolute left-3 top-3.5 w-4 h-4 text-stone-400"></i>
+                      <input type="text" id="contact-phone-input" placeholder="e.g. +971 4 123 4567" class="w-full pl-9 pr-4 py-3 bg-stone-50 border border-stone-200 rounded-sm text-xs text-stone-900 focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800/10 transition-all font-sans" />
+                    </div>
+                  </div>
+                </div>
+
+                <div class="space-y-1">
+                  <label class="text-[10px] font-bold uppercase tracking-wider text-stone-600 font-sans block">Message &amp; Requirements <span class="text-red-600">*</span> <span class="text-[8px] text-stone-500">(must)</span></label>
+                  <textarea id="contact-message-textarea" rows="4" required placeholder="Provide details about expected tonnage, packaging format requirements, and target country of discharge..." class="w-full px-4 py-3 bg-stone-50 border border-stone-200 rounded-sm text-xs text-stone-900 focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800/15 transition-all font-sans leading-relaxed"></textarea>
+                </div>
+
+                <button id="contact-submit-btn" type="submit" class="w-full bg-amber-800 hover:bg-amber-900 text-white py-3.5 rounded-sm text-xs font-bold uppercase tracking-widest transition-colors duration-300 flex items-center justify-center gap-2 shadow cursor-pointer">
+                  <i data-lucide="send" class="w-3.5 h-3.5"></i>
+                  <span>Transmit Official Inquiry</span>
+                </button>
+              </form>
+            </div>
+
+            <!-- AJAX Success panel (Hidden initially) -->
+            <div id="contact-success-state" class="hidden text-center py-16 space-y-4">
+              <div class="w-14 h-14 bg-emerald-50 border border-emerald-200 text-emerald-800 rounded-sm flex items-center justify-center mx-auto shadow-sm">
+                <i data-lucide="check" class="w-7 h-7"></i>
+              </div>
+              <div class="space-y-2">
+                <h3 class="font-serif font-extrabold text-[#2F241C] text-xl animate-fade-in">Commercial Inquiry Received</h3>
+                <p class="text-stone-600 text-xs sm:text-sm max-w-sm mx-auto leading-relaxed font-sans">
+                  Thank you <strong id="contact-success-name"></strong> of <strong id="contact-success-company"></strong>. We have saved your request regarding <strong id="contact-success-subject"></strong>.
+                </p>
+                <p class="text-stone-400 text-xs font-sans">
+                  Our sales desk has scheduled an outbound response to <span id="contact-success-email" class="text-stone-600 font-bold"></span>. A copy of the specifications sheet will be sent immediately.
+                </p>
+              </div>
+              <button id="another-contact-btn" class="bg-amber-800 hover:bg-amber-900 text-white px-5 py-3 rounded-sm text-xs font-bold uppercase tracking-widest transition-colors cursor-pointer shadow-sm">
+                Create New Request
+              </button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+    </main>
+
+    <!-- 3. MAIN SITE FOOTER -->
+    <footer class="bg-stone-900 text-stone-300 border-t border-stone-850" id="main-app-footer">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8" id="footer-top-grid">
+          
+          <div class="md:col-span-5 flex flex-col space-y-6" id="footer-col-1">
+            <img src="/images/logo1.jpg" alt="Wholesome Cashew Logo" class="h-20 w-auto object-contain self-start" />
+            <p class="text-stone-400 text-sm max-w-sm leading-relaxed">
+              We specialize in the sourcing, processing, grading, packaging, distribution, and export of premium Sri Lankan cashew products with global safety standards.
+            </p>
+            <div class="flex flex-col space-y-2 text-xs text-stone-500 font-sans" id="footer-registration-details">
+              <div class="flex items-center gap-2">
+                <i data-lucide="landmark" class="w-3.5 h-3.5 text-amber-600"></i>
+                <span>ROC Registration No.: <strong class="text-stone-300">PV 88700</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <img src="/images/SLCC_IMG.png" alt="SLCC Logo" class="h-12 w-auto object-contain mr-2" />
+                <span>Registered with the <strong class="text-stone-300 font-sans">Sri Lanka Cashew Corporation (SLCC)</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-3 flex flex-col space-y-4" id="footer-col-2">
+            <h3 class="text-amber-600 font-sans font-bold uppercase tracking-widest text-xs">Sitemap</h3>
+            <ul class="space-y-2.5 text-sm text-stone-400" id="footer-sitemap-links">
+              <li><a href="home" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Home / Overview</a></li>
+              <li><a href="capabilities" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Our Capabilities</a></li>
+              <li><a href="markets" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Export &amp; Local Markets</a></li>
+              <li><a href="careers" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Careers</a></li>
+              <li><a href="contact" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-4 flex flex-col space-y-4" id="footer-col-3">
+            <h3 class="text-amber-600 font-sans font-bold uppercase tracking-widest text-xs">Headquarters</h3>
+            <ul class="space-y-3.5 text-sm text-stone-400" id="footer-headquarters-contacts-list">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="map-pin" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+                <span class="leading-relaxed text-stone-350">No. 47, Ganepola,<br />Kotugoda, 11390,<br />Sri Lanka</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="phone" class="w-4.5 h-4.5 text-amber-600 shrink-0"></i>
+                <a href="tel:+94117895382" class="hover:text-amber-500 transition-colors text-stone-350">+94 11 789 5382</a>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="mail" class="w-4.5 h-4.5 text-amber-600 shrink-0"></i>
+                <a href="mailto:info@wholesomecashew.lk" class="hover:text-amber-500 transition-colors text-stone-350 word-break-all">info@wholesomecashew.lk</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-stone-800 mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 font-sans">
+          <p id="copyright-text">
+            &copy; 2026 WHOLESOME CASHEW PRODUCTS (PRIVATE) LIMITED. PV 88700. All Rights Reserved.
+          </p>
+          <div class="flex gap-4">
+            <span class="text-stone-605 text-stone-600">Registered with Sri Lanka Cashew Corporation (SLCC)</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Core Javascript Code -->
+    <script src="/src/app.js"></script>
+  </body>
+</html>

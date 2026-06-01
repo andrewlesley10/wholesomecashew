@@ -1,0 +1,305 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+    <!-- Design Fonts Selection -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Inter:wght@100..900&family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap" rel="stylesheet">
+    
+    <title>Export & Local Markets - Wholesome Cashew Products</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <!-- Custom Tailwind Configuration to match exact corporate branding -->
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: {
+              sans: ['Inter', 'sans-serif'],
+              serif: ['Playfair Display', 'serif'],
+              mono: ['JetBrains Mono', 'monospace']
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Custom Core Animations & Tweaks -->
+    <style>
+      .animate-fade-in {
+        animation: fadeIn 0.35s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+      }
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(8px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+      /* Custom fine-grained branding helpers */
+      .bg-brand-brown-dark { background-color: #2F241C; }
+      .text-stone-350 { color: #A8A29E; }
+      .word-break-all { word-break: break-all; }
+    </style>
+  </head>
+  
+  <body class="min-h-screen flex flex-col bg-stone-50 text-stone-900 font-sans selection:bg-amber-850/25 selection:text-amber-900">
+
+    <!-- 1. PREMIUM HEADER NAVIGATION PORTAL -->
+    <header class="sticky top-0 z-50 bg-[#F9F7F5]/90 backdrop-blur-md border-b border-stone-200 shadow-sm" id="main-app-header">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex h-36 items-center justify-between" id="header-inner-container">
+          
+          <!-- Logo Brand portion -->
+          <a href="home" class="focus:outline-none cursor-pointer flex items-center gap-3 select-none text-left" id="nav-brand-btn">
+            <img src="/images/logo3.png" alt="Wholesome Cashew Logo" id="logo-cashew-mark" class="h-20 w-auto transition-transform duration-300 hover:scale-105 object-contain" />
+          </a>
+
+          <!-- Desktop Navigation link lists -->
+          <nav class="hidden md:flex items-center gap-1 lg:gap-2" id="desktop-nav-menu">
+            <a href="home" data-nav-page="home" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="landmark" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Home</span>
+            </a>
+            <a href="capabilities" data-nav-page="capabilities" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="hammer" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Capabilities</span>
+            </a>
+            <a href="markets" data-nav-page="markets" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="globe" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Export & Distribution</span>
+            </a>
+            <a href="careers" data-nav-page="careers" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="briefcase" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Careers</span>
+            </a>
+            <a href="contact" data-nav-page="contact" class="relative flex items-center gap-1.5 px-4 py-2.5 rounded-sm font-sans text-xs uppercase tracking-widest font-semibold transition-all cursor-pointer text-stone-600 hover:text-amber-800 hover:bg-stone-100/60">
+              <i data-lucide="mail" class="w-3.5 h-3.5 opacity-75"></i>
+              <span>Contact Us</span>
+            </a>
+            
+            <div class="ml-4 pl-4 border-l border-stone-200" id="quick-contact-wrapper">
+              <a href="contact" class="flex items-center gap-1.5 bg-amber-800 hover:bg-amber-900 text-white px-4 py-2.5 rounded-sm font-sans text-xs font-semibold uppercase tracking-wider transition-colors cursor-pointer shadow-sm">
+                <i data-lucide="phone-call" class="w-3.5 h-3.5"></i>
+                <span>Get a Quote</span>
+              </a>
+            </div>
+          </nav>
+
+          <!-- Mobile Hamburger Drawer trigger button -->
+          <div class="flex md:hidden items-center" id="mobile-menu-trigger-container">
+            <button id="mobile-hamburger-btn" class="p-2.5 rounded-sm text-stone-600 hover:text-amber-800 hover:bg-stone-100 focus:outline-none transition-colors">
+              <i data-lucide="menu" class="w-6 h-6"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Dropdown Drawer Slide panel -->
+      <div id="mobile-nav-panel" class="hidden md:hidden bg-[#F9F7F5] border-b border-stone-200 overflow-hidden animate-fade-in">
+        <div class="px-4 py-4 space-y-1.5">
+          <a href="home" data-nav-page="home" id="mobile-nav-home" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="landmark" class="w-4 h-4 opacity-80"></i>
+            <span>Home</span>
+          </a>
+          <a href="capabilities" data-nav-page="capabilities" id="mobile-nav-capabilities" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="hammer" class="w-4 h-4 opacity-80"></i>
+            <span>Capabilities</span>
+          </a>
+          <a href="markets" data-nav-page="markets" id="mobile-nav-markets" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="globe" class="w-4 h-4 opacity-80"></i>
+            <span>Export & Distribution</span>
+          </a>
+          <a href="careers" data-nav-page="careers" id="mobile-nav-careers" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="briefcase" class="w-4 h-4 opacity-80"></i>
+            <span>Careers</span>
+          </a>
+          <a href="contact" data-nav-page="contact" id="mobile-nav-contact" class="w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all text-stone-600 hover:bg-stone-100 hover:text-amber-805">
+            <i data-lucide="mail" class="w-4 h-4 opacity-80"></i>
+            <span>Contact Us</span>
+          </a>
+          
+          <div class="pt-4 mt-2 border-t border-stone-200">
+            <a href="contact" class="w-full flex items-center justify-center gap-2 bg-amber-800 hover:bg-amber-900 text-white py-3 rounded-sm font-sans text-xs font-bold uppercase tracking-wider transition-colors shadow">
+              <i data-lucide="phone-call" class="w-4 h-4"></i>
+              <span>Get in Touch Now</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <!-- 2. MAIN ACTIVE VIEWPORT STAGE -->
+    <main class="flex-grow overflow-x-hidden relative" id="main-viewport">
+      
+      <!-- VIEW C: MARKETS SCREEN -->
+      <div data-page-view="markets" class="animate-fade-in max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16 text-left">
+        <div class="max-w-3xl space-y-4">
+          <span class="text-amber-800 text-xs font-semibold uppercase tracking-widest block font-sans">Worldwide Distribution</span>
+          <h1 class="text-3xl sm:text-4xl lg:text-5xl font-serif font-extrabold tracking-tight text-stone-900">Export Destinations &amp; Local Reach</h1>
+          <p class="text-stone-500 text-sm sm:text-base leading-relaxed leading-7">
+            WHOLESOME CASHEW PRODUCTS (PRIVATE) LIMITED proudly exports premium Sri Lankan cashew products to flourishing international markets including the Middle East and Far East.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center bg-white p-6 rounded-sm border border-stone-200 shadow-xs">
+          <div class="lg:col-span-4 rounded-sm overflow-hidden aspect-video lg:aspect-square bg-stone-100 border border-stone-200">
+            <img src="/src/assets/images/cashew_export_1780336908892.png" alt="Sealed Premium export package" class="w-full h-full object-cover" />
+          </div>
+          <div class="lg:col-span-8 space-y-6 lg:pl-4">
+            <div class="inline-flex items-center gap-1 bg-[#92400E]/10 text-[#92400E] py-1 px-2.5 border border-[#92400E]/20 rounded-sm text-[10px] font-bold font-sans uppercase tracking-widest">
+              <i data-lucide="sparkles" class="w-3 h-3"></i>
+              <span>Sri Lankan Premium Grades</span>
+            </div>
+            <h2 class="text-2xl sm:text-3xl font-serif font-black text-stone-900 leading-tight">Delivering Premium Grade Sri Lankan Cashews Globally</h2>
+            <p class="text-stone-600 text-xs sm:text-sm leading-relaxed font-sans">
+              Our cashews are valued globally for their creamy flavor and notable scale. By packing with state-of-the-art nitrogen flushes, we guarantee export packages land in Middle East and Far East ports with pristine quality, moisture levels under 5%, and excellent crunch.
+            </p>
+            <div class="grid grid-cols-2 sm:grid-cols-3 gap-4 font-sans text-xs pt-2">
+              <div class="border-l-2 border-amber-800 pl-3">
+                <span class="block text-amber-800 font-bold">15+ Countries</span>
+                <span class="text-stone-505 text-stone-500 text-[10px]">Active Export Ports</span>
+              </div>
+              <div class="border-l-2 border-amber-800 pl-3">
+                <span class="block text-amber-800 font-bold">FCL Coordinator</span>
+                <span class="text-stone-505 text-stone-500 text-[10px]">Full Container Freight</span>
+              </div>
+              <div class="border-l-2 border-amber-800 pl-3 col-span-2 sm:col-span-1">
+                <span class="block text-amber-800 font-bold">SLCC Certified</span>
+                <span class="text-stone-505 text-stone-500 text-[10px]">Verified Origin Seal</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="space-y-8">
+          <div class="flex flex-wrap gap-2.5 border-b border-stone-200 pb-4">
+            <button id="btn-region-middle-east" class="px-5 py-3 rounded-sm text-xs font-bold tracking-widest uppercase transition-all cursor-pointer flex items-center gap-2 border bg-amber-800 text-white border-amber-800">
+              <i data-lucide="globe" class="w-4 h-4"></i>
+              <span>Middle East Markets</span>
+            </button>
+            <button id="btn-region-far-east" class="px-5 py-3 rounded-sm text-xs font-bold tracking-widest uppercase transition-all cursor-pointer flex items-center gap-2 border bg-white text-stone-600 border-stone-200 hover:bg-stone-50">
+              <i data-lucide="compass" class="w-4 h-4"></i>
+              <span>Far East Markets</span>
+            </button>
+            <button id="btn-region-local" class="px-5 py-3 rounded-sm text-xs font-bold tracking-widest uppercase transition-all cursor-pointer flex items-center gap-2 border bg-white text-stone-600 border-stone-200 hover:bg-stone-50">
+              <i data-lucide="map-pin" class="w-4 h-4"></i>
+              <span>Sri Lanka Local Distribution</span>
+            </button>
+          </div>
+
+          <!-- Middle East panel -->
+          <div id="markets-region-middle-east" class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in">
+            <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4" id="me-countries-list">
+              <!-- Rendered via JS -->
+            </div>
+            <div class="lg:col-span-4 bg-white rounded-sm border border-stone-200 p-6 space-y-4" id="me-inspect-panel">
+              <h4 class="text-xs uppercase font-sans font-bold tracking-widest text-[#92400E] flex items-center gap-1.5 border-b border-stone-100 pb-2">
+                <i data-lucide="ship" class="w-3.5 h-3.5"></i>
+                <span>Ocean Freight &amp; Port Routing</span>
+              </h4>
+              <div class="text-center py-12 text-stone-400 text-xs font-sans">
+                <p>Click on any Middle Eastern country card on the left to review transit times, shipping discharge ports, and logistics details.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Far East panel -->
+          <div id="markets-region-far-east" class="hidden grid grid-cols-1 lg:grid-cols-12 gap-8 items-start animate-fade-in">
+            <div class="lg:col-span-8 grid grid-cols-1 sm:grid-cols-2 gap-4" id="fe-countries-list">
+              <!-- Rendered via JS -->
+            </div>
+            <div class="lg:col-span-4 bg-white rounded-sm border border-stone-200 p-6 space-y-4" id="fe-inspect-panel">
+              <h4 class="text-xs uppercase font-sans font-bold tracking-widest text-[#92400E] flex items-center gap-1.5 border-b border-stone-100 pb-2">
+                <i data-lucide="plane-takeoff" class="w-3.5 h-3.5"></i>
+                <span>Asia Logistics Coordination</span>
+              </h4>
+              <div class="text-center py-12 text-stone-400 text-xs font-sans">
+                <p>Click on any Far East destination card on the left to verify port terminals and sea voyage timetables.</p>
+              </div>
+            </div>
+          </div>
+
+          <!-- Local panel -->
+          <div id="markets-region-local" class="hidden animate-fade-in">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6" id="local-distribution-grid">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </main>
+
+    <!-- 3. MAIN SITE FOOTER -->
+    <footer class="bg-stone-900 text-stone-300 border-t border-stone-850" id="main-app-footer">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-8" id="footer-top-grid">
+          
+          <div class="md:col-span-5 flex flex-col space-y-6" id="footer-col-1">
+            <img src="/images/logo1.jpg" alt="Wholesome Cashew Logo" class="h-20 w-auto object-contain self-start" />
+            <p class="text-stone-400 text-sm max-w-sm leading-relaxed">
+              We specialize in the sourcing, processing, grading, packaging, distribution, and export of premium Sri Lankan cashew products with global safety standards.
+            </p>
+            <div class="flex flex-col space-y-2 text-xs text-stone-500 font-sans" id="footer-registration-details">
+              <div class="flex items-center gap-2">
+                <i data-lucide="landmark" class="w-3.5 h-3.5 text-amber-600"></i>
+                <span>ROC Registration No.: <strong class="text-stone-300">PV 88700</strong></span>
+              </div>
+              <div class="flex items-center gap-2">
+                <img src="/images/SLCC_IMG.png" alt="SLCC Logo" class="h-12 w-auto object-contain mr-2" />
+                <span>Registered with the <strong class="text-stone-300 font-sans">Sri Lanka Cashew Corporation (SLCC)</strong></span>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:col-span-3 flex flex-col space-y-4" id="footer-col-2">
+            <h3 class="text-amber-600 font-sans font-bold uppercase tracking-widest text-xs">Sitemap</h3>
+            <ul class="space-y-2.5 text-sm text-stone-400" id="footer-sitemap-links">
+              <li><a href="home" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Home / Overview</a></li>
+              <li><a href="capabilities" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Our Capabilities</a></li>
+              <li><a href="markets" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Export &amp; Local Markets</a></li>
+              <li><a href="careers" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Careers</a></li>
+              <li><a href="contact" class="hover:text-amber-500 transition-colors cursor-pointer text-left uppercase tracking-wider text-xs font-semibold">Contact Us</a></li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-4 flex flex-col space-y-4" id="footer-col-3">
+            <h3 class="text-amber-600 font-sans font-bold uppercase tracking-widest text-xs">Headquarters</h3>
+            <ul class="space-y-3.5 text-sm text-stone-400" id="footer-headquarters-contacts-list">
+              <li class="flex items-start gap-2.5">
+                <i data-lucide="map-pin" class="w-5 h-5 text-amber-600 shrink-0 mt-0.5"></i>
+                <span class="leading-relaxed text-stone-350">No. 47, Ganepola,<br />Kotugoda, 11390,<br />Sri Lanka</span>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="phone" class="w-4.5 h-4.5 text-amber-600 shrink-0"></i>
+                <a href="tel:+94117895382" class="hover:text-amber-500 transition-colors text-stone-350">+94 11 789 5382</a>
+              </li>
+              <li class="flex items-center gap-2.5">
+                <i data-lucide="mail" class="w-4.5 h-4.5 text-amber-600 shrink-0"></i>
+                <a href="mailto:info@wholesomecashew.lk" class="hover:text-amber-500 transition-colors text-stone-350 word-break-all">info@wholesomecashew.lk</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="border-t border-stone-800 mt-16 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-stone-500 font-sans">
+          <p id="copyright-text">
+            &copy; 2026 WHOLESOME CASHEW PRODUCTS (PRIVATE) LIMITED. PV 88700. All Rights Reserved.
+          </p>
+          <div class="flex gap-4">
+            <span class="text-stone-605 text-stone-600">Registered with Sri Lanka Cashew Corporation (SLCC)</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+
+    <!-- Core Javascript Code -->
+    <script src="/src/app.js"></script>
+  </body>
+</html>

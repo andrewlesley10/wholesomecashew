@@ -1,0 +1,12 @@
+DirectoryIndex home.html
+
+RewriteEngine On
+
+# 1. Direct external redirect: /page.html -> /page
+RewriteCond %{THE_REQUEST} \s/+(.*?)\.html[\s?] [NC]
+RewriteRule ^ /%1 [R=301,L,NE]
+
+# 2. Internal rewrite: /page -> /page.html
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}.html -f
+RewriteRule ^(.*)$ $1.html [L]
