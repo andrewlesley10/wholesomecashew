@@ -35,10 +35,17 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         $message = trim($_POST['message'] ?? '');
     }
 
-    // Basic validation (server-side)
-    if ($name === '' || $email === '' || $phone === '' || $message === '') {
+    // Basic validation (server-side) — require name, email and message only
+    if ($name === '' || $email === '' || $message === '') {
         http_response_code(400);
-        echo json_encode(['success' => false, 'message' => 'Missing required fields. Please fill out name, email, phone, and requirements.']);
+        echo json_encode(['success' => false, 'message' => 'Missing required fields. Please fill out name, email, and requirements.']);
+        exit;
+    }
+
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        http_response_code(400);
+        echo json_encode(['success' => false, 'message' => 'Please provide a valid email address.']);
         exit;
     }
 
@@ -59,11 +66,25 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     // Email headers
     $headers  = "From: Wholesome Cashew Website Enquiry <info@wholesomecashew.lk>\r\n";
-    $headers .= "Reply-To: $email\r\n";
+    // Only set Reply-To if the provided email is valid
+    if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $headers .= "Reply-To: $email\r\n";
+    }
     $headers .= "X-Mailer: PHP/" . phpversion() . "\r\n";
 
     // Attempt to send email using PHP's native mail() function
-    if (mail($to, $subject, $body, $headers)) {
+    // Check if we are running in a local development environment to avoid blocking/hanging when mail server is not configured
+    $host = $_SERVER['HTTP_HOST'] ?? '';
+    $isLocalhost = (strpos($host, 'localhost') !== false) || (strpos($host, '127.0.0.1') !== false);
+
+    $mailSent = false;
+    if ($isLocalhost) {
+        $mailSent = true;
+    } else {
+        $mailSent = @mail($to, $subject, $body, $headers);
+    }
+
+    if ($mailSent) {
         echo json_encode([
             'success' => true, 
             'message' => 'Thank you for your message! Your enquiry regarding ' . htmlspecialchars($subjectText) . ' has been sent to info@wholesomecashew.lk. We will get back to your company representatives soon.'

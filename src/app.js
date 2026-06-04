@@ -133,7 +133,7 @@ document.addEventListener('DOMContentLoaded', () => {
   setupCareersForm();
   setupContactForm();
   setupCopyEmailButtons();
-  
+
   // Create icons initially
   lucide.createIcons();
 });
@@ -142,18 +142,18 @@ document.addEventListener('DOMContentLoaded', () => {
 function highlightActiveNav() {
   const currentPath = window.location.pathname;
   const navLinks = document.querySelectorAll('[data-nav-page]');
-  
+
   navLinks.forEach(link => {
     const pageName = link.getAttribute('data-nav-page');
     const isMobileNav = link.id && link.id.includes('mobile-nav');
-    
+
     let isActive = false;
     if (pageName === 'home') {
       isActive = currentPath === '/' || currentPath === '' || currentPath.endsWith('/') || currentPath.endsWith('/home.html') || currentPath.endsWith('/home') || currentPath.endsWith('/index.html') || currentPath.endsWith('/index');
     } else {
       isActive = currentPath.endsWith('/' + pageName) || currentPath.endsWith('/' + pageName + '.html');
     }
-    
+
     if (isActive) {
       if (isMobileNav) {
         link.className = 'w-full flex items-center gap-3.5 px-4.5 py-3 rounded-sm font-sans text-sm uppercase tracking-widest font-bold text-left transition-all bg-amber-800 text-white shadow-sm';
@@ -174,7 +174,7 @@ function highlightActiveNav() {
 function setupMobileMenu() {
   const burgerBtn = document.getElementById('mobile-hamburger-btn');
   const mobileDrawer = document.getElementById('mobile-nav-panel');
-  
+
   if (burgerBtn && mobileDrawer) {
     burgerBtn.addEventListener('click', () => {
       mobileDrawer.classList.toggle('hidden');
@@ -291,7 +291,7 @@ function setupCapabilitiesInteractivity() {
       const capId = item.getAttribute('data-cap-id');
       const label = item.querySelector('.detail-label-text');
       const arrowObj = item.querySelector('.arrow-indicator');
-      
+
       if (selectedCapability === capId) {
         selectedCapability = null;
         item.className = 'bg-white rounded-sm border border-stone-200 p-6 transition-all duration-300 cursor-pointer text-left flex flex-col relative group hover:border-amber-800 hover:shadow-xs';
@@ -309,7 +309,7 @@ function setupCapabilitiesInteractivity() {
             if (oldArrowObj) oldArrowObj.style.transform = 'rotate(0deg)';
           }
         }
-        
+
         selectedCapability = capId;
         item.className = 'bg-white rounded-sm border border-amber-800 ring-2 ring-amber-800/10 p-6 transition-all duration-300 cursor-pointer text-left flex flex-col relative shadow-sm';
         if (label) label.textContent = 'Collapse Detail';
@@ -325,9 +325,9 @@ function setupMarketsSectors() {
   const regionBtnME = document.getElementById('btn-region-middle-east');
   const regionBtnFE = document.getElementById('btn-region-far-east');
   const regionBtnLocal = document.getElementById('btn-region-local');
-  
+
   if (!regionBtnME || !regionBtnFE || !regionBtnLocal) return;
-  
+
   const contME = document.getElementById('markets-region-middle-east');
   const contFE = document.getElementById('markets-region-far-east');
   const contLocal = document.getElementById('markets-region-local');
@@ -339,12 +339,12 @@ function setupMarketsSectors() {
   function switchRegion(region) {
     activeRegion = region;
     selectedCountry = null;
-    
+
     // Clear active UI classes
     regionBtnME.className = 'px-5 py-3 rounded-sm text-xs font-bold tracking-widest uppercase transition-all cursor-pointer flex items-center gap-2 border bg-white text-stone-600 border-stone-200 hover:bg-stone-50';
     regionBtnFE.className = 'px-5 py-3 rounded-sm text-xs font-bold tracking-widest uppercase transition-all cursor-pointer flex items-center gap-2 border bg-white text-stone-600 border-stone-200 hover:bg-stone-50';
     regionBtnLocal.className = 'px-5 py-3 rounded-sm text-xs font-bold tracking-widest uppercase transition-all cursor-pointer flex items-center gap-2 border bg-white text-stone-600 border-stone-200 hover:bg-stone-50';
-    
+
     contME.classList.add('hidden');
     contFE.classList.add('hidden');
     contLocal.classList.add('hidden');
@@ -366,12 +366,12 @@ function setupMarketsSectors() {
 
   // Render country list helpers
   function renderCountryLists(region) {
-    const listContainer = region === 'middle-east' 
-      ? document.getElementById('me-countries-list') 
+    const listContainer = region === 'middle-east'
+      ? document.getElementById('me-countries-list')
       : document.getElementById('fe-countries-list');
-    
+
     const arraySet = region === 'middle-east' ? middleEastDestinations : farEastDestinations;
-    
+
     if (listContainer) {
       listContainer.innerHTML = arraySet.map(dest => `
         <div data-dest-name="${dest.name}" class="bg-white rounded-sm border border-stone-200 p-5 cursor-pointer transition-all duration-200 flex items-center justify-between group hover:border-amber-800">
@@ -397,7 +397,7 @@ function setupMarketsSectors() {
         card.addEventListener('click', () => {
           const chosenName = card.getAttribute('data-dest-name');
           showDestinationDetails(region, chosenName);
-          
+
           // Style state Highlight
           listCards.forEach(c => c.className = 'bg-white rounded-sm border border-stone-200 p-5 cursor-pointer transition-all duration-200 flex items-center justify-between group hover:border-amber-800');
           card.className = 'bg-white rounded-sm border border-amber-800 shadow-xs bg-stone-50 p-5 cursor-pointer transition-all duration-200 flex items-center justify-between group';
@@ -408,13 +408,13 @@ function setupMarketsSectors() {
 
   function showDestinationDetails(region, name) {
     selectedCountry = name;
-    const destPanel = region === 'middle-east' 
-      ? document.getElementById('me-inspect-panel') 
+    const destPanel = region === 'middle-east'
+      ? document.getElementById('me-inspect-panel')
       : document.getElementById('fe-inspect-panel');
-    
+
     const arraySet = region === 'middle-east' ? middleEastDestinations : farEastDestinations;
     const matched = arraySet.find(c => c.name === name);
-    
+
     if (destPanel && matched) {
       destPanel.innerHTML = `
         <div class="space-y-4 text-left animate-fade-in">
@@ -483,10 +483,10 @@ function setupCareersForm() {
   formElement.addEventListener('submit', (e) => {
     e.preventDefault();
 
-    const fullName  = document.getElementById('careers-fullname-input').value.trim();
-    const email     = document.getElementById('careers-email-input').value.trim();
-    const role      = document.getElementById('careers-role-select').value;
-    const message   = document.getElementById('careers-message-textarea').value.trim();
+    const fullName = document.getElementById('careers-fullname-input').value.trim();
+    const email = document.getElementById('careers-email-input').value.trim();
+    const role = document.getElementById('careers-role-select').value;
+    const message = document.getElementById('careers-message-textarea').value.trim();
 
     // Build the mailto: URI — everything pre-filled for the applicant
     const subject = encodeURIComponent(`Career Inquiry: ${role} — ${fullName}`);
@@ -499,9 +499,33 @@ function setupCareersForm() {
       `Email:      ${email}\n\n` +
       `--- Introduction ---\n` +
       `${message || '(No introductory message provided)'}\n\n` +
-      `Please find my CV attached to this email.\n\n` +
-      `Kind regards,\n${fullName}`
-    );
+      `Please find my CV attached to this email.\n` +
+      `// POST all form data to contact.php — PHP will send the email to info@wholesomecashew.lk
+      const payload = {
+        name: nameVal,
+        company: companyVal,
+        email: emailVal,
+        phone: phoneVal,
+        subject: subjectVal,
+        message: messageVal
+      };
+
+      fetch('/contact.php', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(payload)
+      })
+      .then(res => res.json())
+      .then(() => {
+        triggerFormSuccessState(nameVal, companyVal, subjectVal, emailVal);
+      })
+      .catch(() => {
+        triggerFormSuccessState(nameVal, companyVal, subjectVal, emailVal);
+      })
+      .finally(() => {
+        submitBtn.disabled = false;
+        submitBtn.innerHTML = originalBtnHtml;
+      });body}`);
 
     // Open the user's default email client addressed to the careers inbox
     window.location.href = `mailto:careers@wholesomecashew.lk?subject=${subject}&body=${body}`;
@@ -533,12 +557,18 @@ function setupContactForm() {
   const successSection = document.getElementById('contact-success-state');
 
   if (formElement && formSection && successSection) {
+    const phoneInput = document.getElementById('contact-phone-input');
+    if (phoneInput) {
+      phoneInput.addEventListener('input', (e) => {
+        e.target.value = e.target.value.replace(/[^0-9+\s\-()]/g, '');
+      });
+    }
     formElement.addEventListener('submit', (e) => {
       e.preventDefault();
-      
+
       const submitBtn = document.getElementById('contact-submit-btn');
       const originalBtnHtml = submitBtn.innerHTML;
-      
+
       // Spinner preview state during transmission
       submitBtn.disabled = true;
       submitBtn.innerHTML = `
@@ -546,7 +576,7 @@ function setupContactForm() {
           <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
           <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
         </svg>
-        <span>Transmitting Request...</span>
+        <span>Sending...</span>
       `;
 
       // Form element parameter collections
@@ -554,7 +584,8 @@ function setupContactForm() {
       const companyVal = document.getElementById('contact-company-input').value;
       const emailVal = document.getElementById('contact-email-input').value;
       const phoneVal = document.getElementById('contact-phone-input').value;
-      const subjectVal = document.getElementById('contact-subject-select').value;
+      const subjectEl = document.getElementById('contact-subject-select');
+      const subjectVal = subjectEl ? subjectEl.value : 'Sales & Export Inquiry';
       const messageVal = document.getElementById('contact-message-textarea').value;
 
       // Construct JSON payload matching php format
@@ -567,34 +598,40 @@ function setupContactForm() {
         message: messageVal
       };
 
-      // Attempt AJAX POST to local contact.php
+      // Attempt AJAX POST to local contact.php with 4-second timeout fallback
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 4000);
+
       fetch('/contact.php', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify(payload)
+        body: JSON.stringify(payload),
+        signal: controller.signal
       })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Network response not OK');
-        }
-        return response.json();
-      })
-      .then(data => {
-        // Success state screen triggers on correct submission
-        triggerFormSuccessState(nameVal, companyVal, subjectVal, emailVal);
-      })
-      .catch(err => {
-        // Fallback: If preview has no PHP capability, we still gracefully complete client-side success screen
-        console.warn('PHP Mail Server not active locally, falling back to instant client simulation.', err);
-        triggerFormSuccessState(nameVal, companyVal, subjectVal, emailVal);
-      })
-      .finally(() => {
-        // Reset submit button state
-        submitBtn.disabled = false;
-        submitBtn.innerHTML = originalBtnHtml;
-      });
+        .then(response => {
+          clearTimeout(timeoutId);
+          if (!response.ok) {
+            throw new Error('Network response not OK');
+          }
+          return response.json();
+        })
+        .then(data => {
+          // Success state screen triggers on correct submission
+          triggerFormSuccessState(nameVal, companyVal, subjectVal, emailVal);
+        })
+        .catch(err => {
+          clearTimeout(timeoutId);
+          // Fallback: If preview has no PHP capability, we still gracefully complete client-side success screen
+          console.warn('PHP Mail Server not active locally, falling back to instant client simulation.', err);
+          triggerFormSuccessState(nameVal, companyVal, subjectVal, emailVal);
+        })
+        .finally(() => {
+          // Reset submit button state
+          submitBtn.disabled = false;
+          submitBtn.innerHTML = originalBtnHtml;
+        });
     });
 
     // Reset Form button
