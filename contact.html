@@ -269,7 +269,7 @@
                     <label class="text-[10px] font-bold uppercase tracking-wider text-stone-600 font-sans block">Phone Number</label>
                     <div class="relative">
                       <i data-lucide="phone" class="absolute left-3 top-3.5 w-4 h-4 text-stone-400"></i>
-                      <input type="text" id="contact-phone-input" placeholder="e.g. +971 4 123 4567" class="w-full pl-9 pr-4 py-3 bg-stone-50 border border-stone-200 rounded-sm text-xs text-stone-900 focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800/10 transition-all font-sans" />
+                      <input type="tel" id="contact-phone-input" required placeholder="e.g. +971 4 123 4567" pattern="^[0-9+\s\-()]+$" title="Please enter a valid phone number (digits, spaces, +, -, or parentheses)" class="w-full pl-9 pr-4 py-3 bg-stone-50 border border-stone-200 rounded-sm text-xs text-stone-900 focus:border-amber-800 focus:outline-none focus:ring-2 focus:ring-amber-800/10 transition-all font-sans" />
                     </div>
                   </div>
                 </div>
@@ -281,7 +281,7 @@
 
                 <button id="contact-submit-btn" type="submit" class="w-full bg-amber-800 hover:bg-amber-900 text-white py-3.5 rounded-sm text-xs font-bold uppercase tracking-widest transition-colors duration-300 flex items-center justify-center gap-2 shadow cursor-pointer">
                   <i data-lucide="send" class="w-3.5 h-3.5"></i>
-                  <span>Transmit Official Inquiry</span>
+                  <span>Send Inquiry</span>
                 </button>
               </form>
             </div>
