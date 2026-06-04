@@ -211,10 +211,23 @@ function renderDynamicComponents() {
 
   // B. Capabilities Screen Grid
   const capabilitiesItemsGrid = document.getElementById('capabilities-items-grid-column-inner');
+  const capabImages = [
+    'capab1.webp',
+    'capab2.avif',
+    'capab3.jpg',
+    'capab4.webp',
+    'capab5.webp',
+    'capab6.jpg',
+    'capab7.webp',
+    'capab8.avif',
+    'capab9.jpg'
+  ];
   if (capabilitiesItemsGrid) {
-    capabilitiesItemsGrid.innerHTML = capabilities.map(cap => `
+    capabilitiesItemsGrid.innerHTML = capabilities.map((cap, idx) => `
       <div id="capability-item-${cap.id}" data-cap-id="${cap.id}" class="bg-white rounded-sm border border-stone-200 p-6 transition-all duration-300 text-left flex flex-col relative group hover:border-amber-800 hover:shadow-xs">
-        <div class="rounded-sm overflow-hidden aspect-[4/3] bg-stone-100 mb-4 border border-stone-200"></div>
+        <div class="rounded-sm overflow-hidden aspect-[4/3] bg-stone-100 mb-4 border border-stone-200">
+          <img src="/images/${capabImages[idx]}" alt="${cap.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" />
+        </div>
 
         <h3 class="font-serif font-semibold text-base text-stone-900 mb-2">
           ${cap.title}
